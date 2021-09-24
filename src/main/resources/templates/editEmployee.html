@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Modifier Employé</title>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" ></link>
+ <link  href="http://www.toutcool.com/styles.css" rel="stylesheet" />
+</head>
+<body>
+
+
+
+<div layout:fragment="content">
+
+  <div style="margin-bottom:60px" class="container">
+  <div class="spacer col-md-8 col-md-offset-2 col-xs-12 ">
+  <div class="panel panel-default">
+   
+  <div class="panel-heading">Modifier Employé</div>
+  <div class="panel-body">
+  
+ <form th:action="@{/saveemployee}"  method="post" name="formSaisie" onsubmit="return valider()">
+  
+  
+
+        
+ 
+<input class="form-control" type="hidden" name="id" id="id" th:value="${employee.id}"  ></input>
+  
+ 
+  <label  class="control-label" for="code">* Code Barre</label>
+  <input class="form-control" type="text" name="code" id="code" th:value="${employee.code}"  required></input>
+ 
+  <label  class="control-label">* Nom</label>
+  <input class="form-control" type="text" name="name" id="name" th:value="${employee.name}"  required></input>
+ 
+
+ <div class="form-group ">
+ 
+  <label class="control-label">Date de naissance</label>
+  <input class="form-control" type="date" name="datenaissance"  id="datenaissance" th:value="${employee.datenaissance}" required></input>
+  
+  
+ 
+<!--   <label class="control-label">* Prenom</label>
+  <input class="form-control" type="text" name="prenom" id="prenom" th:value="${employee.prenom}" required></input> -->
+
+<label class="control-label">Adresse</label>
+  <input class="form-control" type="text" name="adresse" id="adresse" th:value="${employee.adresse}" ></input>
+
+
+
+ <label class="control-label">N° TEL</label>
+  <input class="form-control" type="text"name="tel" id="tel" th:value="${employee.tel}"   pattern="[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}"
+    placeholder="05-53-24-68-69"    required></input>
+
+<label class="control-label">Mail</label>
+  <input class="form-control" type="text" name="mail"  id="mail" th:value="${employee.mail}" 
+  
+   pattern="[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*"
+    required ></input>
+
+ <label class="control-label">Societe</label>
+  <input class="form-control" type="text" name="societe"  id="societe" th:value="${employee.societe}"></input>
+
+ <label class="control-label">Voiture</label>
+  <input class="form-control" type="text" name="voiture"  id="voiture" th:value="${employee.voiture}"></input>
+
+ <label class="control-label">Carte Gasoil</label>
+  <input class="form-control" type="text" name="cg"  id="cg" th:value="${employee.cg}"></input>
+
+ <label class="control-label">Zone</label>
+  <input class="form-control" type="text" name="zone"  id="zone" th:value="${employee.zone}"></input>
+
+ <label class="control-label">Date Entree</label>
+  <input class="form-control" type="date" name="dateentrer"  id="dateentrer" th:value="${employee.dateentrer} "></input>
+  
+   <label class="control-label">Date Fin période d'essai</label>
+  <input class="form-control" type="date" name="datefinpe"  id="datefinpe" th:value="${employee.datefinpe}" required></input>
+  
+   <label class="control-label">La date de fin du contrat</label>
+  <input class="form-control" type="date" name="datefinc"  id="datefinc" th:value="${employee.datefinc}" required></input>
+
+
+<div>
+ <label class="control-label">Operateur</label>
+  <input class="form-control" type="text" name="operateur"  id="operateur" th:value="${employee.operateur}"></input>
+</div>
+
+<!-- <div>
+  <input type="checkbox"  name="operateur" id="operateur" value="Free" >
+  <label for="vehicle1">Free </label><br>
+  
+  <input type="checkbox" name="operateur" id="operateur" value="Bouygues" >
+  <label for="vehicle2">Bouygues</label><br>
+  
+  <input type="checkbox" name="operateur" id="operateur" value="SFR" >
+  <label for="vehicle3"> SFR</label><br><br>
+
+  <input type="checkbox" name="operateur" id="operateur" value="Orange" >
+  <label for="vehicle4">Orange</label><br>
+  
+  <input type="checkbox" name="operateur" id="operateur" value="B.Télécom" >
+  <label for="vehicle5">B.Télécom</label><br><br>
+</div> -->
+
+</div>
+
+<!--  <label class="control-label">Auth Token</label>
+  <input class="form-control" type="text" name="authtoken" th:fieled="*{shop.authtoken}"></input>
+
+
+ <label class="control-label">Account SID</label>
+  <input class="form-control" type="text" name="accountsid" th:fieled="*{shop.accountsid}"></input>
+   -->
+
+ <div style="margin-top: 30px">
+ <div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+   
+      <div class="caption">
+       
+         <button type="submit"  class="btn btn-primary btn-block"><span class="glyphicon glyphicon-ok"></span> Valider</button>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+ </div>
+ 
+ 
+
+ 
+
+  
+  
+  
+  
+   
+   
+   
+   
+   
+ <div style="margin-top: 30px">
+ 
+ 
+ 
+ <p><font  >                                  </font></p>
+ 
+ 
+ 
+
+  </div>
+
+  </form>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+function valider() {
+	var i="";
+	var o="";
+	var a=0;
+  // si la valeur du champ prenom est non vide
+  if(document.formSaisie.nommagasin.value != "") {
+		    // alors on envoie le formulaire
+		   // document.formSaisie.submit();
+		    a=a+1;
+		    
+			  
+		  }
+  else {
+	  
+	  i="Saisissez le nom de commerce";
+  }
+  
+  
+  if(document.formSaisie.adressemag.value != "") {
+	    // alors on envoie le formulaire
+	   // document.formSaisie.submit();
+	    a=a+1;
+	   
+		 
+	  }
+  else{
+	  o="Saisissez l'adresse";
+  }
+  if(a==2){
+	  
+	  return true;
+	  
+  }
+  
+  if (a!=2){
+    // sinon on affiche un message
+    alert(" les champs marqués d'un * sont obligatoires ");
+    return false;
+  }
+}
+
+//]]>
+</script>
+
+    </div>
+ 
+  </div> 
+  </div>
+  </div>
+  </div>
+</body>
+</html>

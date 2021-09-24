@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Mouvement</title>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" ></link>
+<link href="//cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css"></link>
+<script type="text/javascript" 
+src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>            <!-- datatable  -->
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>  <!-- datatable  -->
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>  <!-- datatable  -->
+<script type="text/javascript">
+    $(document).ready(function () {
+       $('#checkBoxAll').click(function(){
+    	   if ($(this).is(":checked"))
+    		   $('.chkCheckBoxId').prop('checked',true)
+    		   else
+    		   $('.chkCheckBoxId').prop('checked',false)
+       })	
+    })
+
+$(document).ready(function() {              <!-- datatable  -->
+    $('#example').DataTable( {
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+        }
+    } );
+} );
+
+    $(function(){
+	    $(".switcher").each(function(){
+	        if ($(this).text() == "I.T.S"){
+	            $(this).addClass("enabled");
+	        } else {
+	            $(this).removeClass("enabled");
+	        }
+	    });
+	});
+
+</script>
+
+<style>
+.divcontainer
+{padding: 25px 0px 50px 0px;}
+
+.switcher{
+    color:orange;
+}
+
+.switcher.enabled{
+    color:blue;
+    }
+
+</style>
+
+</head>
+<body>
+
+
+
+<div>
+
+</div>
+
+<div layout:fragment="content">
+
+  <div class="container">
+ 
+  <div class="panel panel-default">
+   
+  <!-- <div class="panel-heading"></div> -->
+    <div class="navbar navbar-default" > 
+ 
+  <div class="container-fluid" >
+
+<h1 class="switcher"th:text="${societe}"></h1>
+   <ul class="nav navbar-nav navbar-right">
+    <li><a th:href="@{/}">Accueil</a></li>
+    <li > <a th:href="@{/listeemploye}" th:inline="text" >Liste employés </a></li>
+    <li><a th:href="@{produits}">Liste produits</a></li>
+     <li><a th:href="@{entrerStock?typemouv=Entrer}">Entrée stock</a></li>
+      <li><a th:href="@{entrerStock?typemouv=Sortie}">Sortie stock</a></li>
+    
+        <li><a th:href="@{/login?logout}">Déconnecté </a></li>
+<!--    <li > <a th:href="@{magasin(email=${#httpServletRequest.remoteUser})}" th:inline="text" >Commerces </a></li>
+    <li><a th:href="@{shopmag(email=${#httpServletRequest.remoteUser})}">page</a></li>
+    <li><a th:href="@{listemag(email=${#httpServletRequest.remoteUser})}">Coupons</a></li>
+     <li><a th:href="@{campagne}">Campagnes</a></li>
+ 
+ 
+  
+        <li><a th:href="@{/login?logout}"><span class="glyphicon glyphicon-log-out"></span>Se déconnecter</a></li> -->
+      </ul>
+ </div>
+ 
+ </div>
+  
+  
+  
+  
+<div class="alert alert-info" >Mouvement </div>
+  
+  
+   <div class="container">
+
+<h5></h5>
+<h5></h5>
+
+</div>
+  <div class="panel-body">
+  
+  <label>Employé <span class="glyphicon glyphicon-user"></span> . </label><input th:value="${employee.name}"></input>
+  <label>   </label><input th:value="${employee.prenom}"></input>
+  <h1></h1> 
+<h2></h2>
+<h3></h3>
+ 	<form th:action="@{trouverpro}">
+
+						<!-- <input  type="hidden" name="code" th:value="${cmd.code}"> </input> -->
+						
+						<label>Code Barre. </label> <input type="text" name="mc"
+							th:value="${mc}"> </input> <label><span class="glyphicon glyphicon-barcode"></span></label>
+						<button class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+                    
+					</form>
+  
+ <h1></h1>
+ 
+
+						<!-- <input  type="hidden" name="code" th:value="${cmd.code}"> </input> -->
+						
+						
+							
+							
+					<form th:action="@{inserpro}">	
+					<label>Designation</label> <input type="text" name="designation"
+							th:value="${produits.designation}"> </input>	
+							 <label>Prix</label> <input type="number" name="Prix"
+							th:value="${produits.prix}"> </input>
+						<label></label> <input type="hidden" name="code"
+							th:value="${produits.code}"> </input>	
+							<label>Qtes</label> <input type="number" name="qtes"
+							th:value="${qtes}" required> </input>
+						<button class="btn btn-primary"><span class="glyphicon glyphicon-check"></span>  Inserer</button>
+                    
+					</form>
+ 
+   
+ 
+ </div>
+<!--  <form th:action="@{envoiyerone(idme=${idme})}" method="post">
+
+<h1>                 </h1>
+    <div class="form-group"> -->
+
+  <!--    <label class="control-label">Magasin * (Champ obligatoire)</label>
+  <input class="form-control" type="text" name="company" th:value="${message.company}"></input>
+ 
+  <label class="control-label">Message</label>
+
+  <textarea class="form-control" rows="3" id="comment"  name="text" th:fieled="*{message.text}" ></textarea>
+ 
+ 
+
+  <div>
+   <p><font  >                                  </font></p>
+  <input type="checkbox"  th:name="envoyer" th:value="true" >Envoyer pour touts les clients</input> 
+  
+ <p><font  >                                  </font></p>
+  <button type="submit" class="btn btn-primary">  Envoyer   </button> -->
+  </div>
+
+<!-- <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action<br /></a> 
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div> -->
+  
+  <!--  <input type="text" name="yes" th:value="${count}"></input>
+  <input type="text" name="no" th:value="${no}"></input>
+  <input type="text" name="type" th:value="${type}"></input> -->
+  
+  
+  
+  
+  
+ <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+ <thead>
+
+ <tr>
+  <!--  <th>   <input type="checkbox" id="checkBoxAll"   />       checked="checked"
+   <label>Sélectionner tout</label>
+   </th> -->
+  <!--  <th>  N° </th> -->
+   <th>  Date</th>
+   
+  <th>  Code Barre</th>
+   <th>  Designation</th>
+   <th>  Prix </th>
+<th>  Qtes </th>
+<th>  Montant </th>
+<th>  Utilisateur</th>
+<th>Action</th>
+ </tr>
+ </thead>
+ <tbody>
+     <tr th:each="a:${mouvement}">
+<!--    <input type="checkbox" name="C2" value="deux" checked="checked" />2
+    <td><input type="checkbox" class="chkCheckBoxId" th:name="codemag" th:value="${a.codemag}" /></td> checked="checked" -->
+  <!--    <td  th:text="${a.code}"></td>
+  <td  th:text="${a.qtes}"></td>
+    <td  th:text="${a.designation}"></td>
+     <td  th:text="${a.prix}"></td> -->
+     <td  th:text="${#dates.format(a.date, 'dd-MM-yyyy')}"></td>
+<td  th:text="${a.codepro}"></td>
+ <td  th:text="${a.designation}"></td>
+   <td  th:text="${a.prix}"></td>
+    <td  th:text="${a.qtes}"></td>
+     <td  th:text="${a.montant}"></td> 
+     <td  th:text="${a.utilisateur}"></td> 
+     
+  <td>
+    
+     
+     <a onclick="return confirm('Êtes-vous sûr de vouloir supprimer !') " th:href="@{deletemouv(id=${a.id})}" class="btn btn-danger"><span class="glyphicon glyphicon-trash
+"></span></a>
+ 
+     </td>
+    
+     </tr>
+      
+ </tbody>
+ </table>
+ 
+  
+  
+
+  
+
+ 
+<!--  </div>
+<div>
+<ul class="nav nav-pills" >
+<li th:class="${pagecourant}==${status.index}?'active':''" th:each="pa,status:${pages}">
+<a th:href="@{contact(id=${idq},page=${status.index},size=${size},mc=${mc})}" th:text="${status.index}"></a>
+</li>
+</ul>
+</div> -->
+
+
+ 
+  
+
+<h1></h1>
+<h1></h1>
+<h1></h1>
+<h1></h1>
+
+    </div>
+ <h1></h1>
+<h1></h1>
+<h1></h1>
+<h1></h1>
+  </div> 
+  
+  <h1></h1>
+<h1></h1>
+<h1></h1>
+<h1></h1>
+  <h1></h1>
+<h1></h1>
+<h1></h1>
+<h1></h1>
+  </div>
+
+
+ 
+</body>
+</html>

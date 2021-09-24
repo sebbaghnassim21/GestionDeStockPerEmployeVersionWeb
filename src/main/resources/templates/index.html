@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+  <title>Logiciel de gestion Employee</title>
+
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+
+  </script>
+  <style>
+  body {
+  padding-top: 50px;
+  background-color:#FFFFF; 
+  }
+  
+
+  </style>
+
+</head>
+<body>
+
+
+
+
+<div class="container">
+
+<div class="row">
+<div class="col-6 col-md-4"></div>
+
+<div class="col-6 col-md-4">
+
+
+
+<br><br>
+
+<a th:href="@{/employee?so=ITS}" th:inline="text" class="btn btn-primary btn-lg btn-block">ITS</a>
+
+<br><br>
+
+<a th:href="@{/employee?so=ALLCOM}" th:inline="text"  class="btn btn-warning btn-lg btn-block">ALLCOM</a>
+
+<br><br>
+
+<br><br>
+
+<a th:href="@{/user}" th:inline="text"  class="btn btn-success btn-lg btn-block">Utilisateurs</a>
+
+<br><br>
+
+<a th:href="@{/login?logout}" th:inline="text"  class="btn btn-light btn-lg btn-block">Déconnecté</a>
+
+<br><br>
+
+</div>
+  <div class="col-6 col-md-4"></div>
+  
+</div>
+</div>
+
+</body>
+</html>

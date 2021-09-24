@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Nouveau Produit</title>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" ></link>
+ <link  href="http://www.toutcool.com/styles.css" rel="stylesheet" />
+</head>
+<body>
+
+
+
+<div layout:fragment="content">
+
+  <div style="margin-bottom:60px" class="container">
+  <div class="spacer col-md-8 col-md-offset-2 col-xs-12 ">
+  <div class="panel panel-default">
+   
+  <div class="panel-heading">Nouveau Produit</div>
+  <div class="panel-body">
+  
+ <form th:action="@{/saveproduit}"  method="post" name="formSaisie" onsubmit="return valider()">
+  
+  
+
+        
+ 
+
+  
+ 
+  <label  class="control-label" for="code">* Code Barre</label>
+  <input class="form-control" type="text" name="code" id="code" th:fieled="*{code}"  required></input>
+ 
+  <label  class="control-label">* Designation</label>
+  <input class="form-control" type="text" name="designation" id="designation" th:fieled="*{designation}"  required></input>
+ 
+
+ <div class="form-group ">
+  <label class="control-label">* Prix</label>
+  <input class="form-control" type="number" step="0.01"
+   name="prix" id="prix" th:fieled="*{prix}"></input>
+  
+  
+    <label class="control-label">* Qtes</label>
+  <input class="form-control" type="number" name="qtes" id="qtes" th:value="*{qtes}" required></input>
+  
+   <label class="control-label">* Qtes Min</label>
+  <input class="form-control" type="number" name="min" id="min" th:value="*{min}" required></input>
+
+</div>
+
+<!--  <label class="control-label">Auth Token</label>
+  <input class="form-control" type="text" name="authtoken" th:fieled="*{shop.authtoken}"></input>
+
+
+ <label class="control-label">Account SID</label>
+  <input class="form-control" type="text" name="accountsid" th:fieled="*{shop.accountsid}"></input>
+   -->
+
+ <div style="margin-top: 30px">
+ <div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+   
+      <div class="caption">
+       
+         <button type="submit"  class="btn btn-primary btn-block"><span class="glyphicon glyphicon-ok"></span> Valider</button>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+ </div>
+ 
+ 
+
+ 
+
+  
+  
+  
+  
+   
+   
+   
+   
+   
+ <div style="margin-top: 30px">
+ 
+ 
+ 
+ <p><font  >                                  </font></p>
+ 
+ 
+ 
+
+  </div>
+
+  </form>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+function valider() {
+	var i="";
+	var o="";
+	var a=0;
+  // si la valeur du champ prenom est non vide
+  if(document.formSaisie.nommagasin.value != "") {
+		    // alors on envoie le formulaire
+		   // document.formSaisie.submit();
+		    a=a+1;
+		    
+			  
+		  }
+  else {
+	  
+	  i="Saisissez le nom de commerce";
+  }
+  
+  
+  if(document.formSaisie.adressemag.value != "") {
+	    // alors on envoie le formulaire
+	   // document.formSaisie.submit();
+	    a=a+1;
+	   
+		 
+	  }
+  else{
+	  o="Saisissez l'adresse";
+  }
+  if(a==2){
+	  
+	  return true;
+	  
+  }
+  
+  if (a!=2){
+    // sinon on affiche un message
+    alert(" les champs marqués d'un * sont obligatoires ");
+    return false;
+  }
+}
+
+//]]>
+</script>
+
+    </div>
+ 
+  </div> 
+  </div>
+  </div>
+  </div>
+</body>
+</html>
